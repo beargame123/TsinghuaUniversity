@@ -19,12 +19,14 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
+    // 댓글 생성
     public void create(int id,CommentDto commentDto){
         Post post = postRepository.findById(id).get();
         Comment comment = new Comment(commentDto.getComment(), post.getId());
         commentRepository.save(comment);
     }
 
+    // 댓글 리스트
     public List<CommentList> commentList(@PathVariable int id){
         Post post = postRepository.findById(id).get();
         List<Comment> comments = commentRepository.findAll();
