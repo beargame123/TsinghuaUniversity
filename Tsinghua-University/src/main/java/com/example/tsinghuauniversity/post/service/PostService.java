@@ -16,20 +16,19 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
+    // 게시글 생성
     public void create(PostDto postDto){
         Post post = new Post(postDto.getTitle(), postDto.getContent(), postDto.getCategory());
         postRepository.save(post);
     }
 
+    // 게시글 삭제 (삭제 보류)
     public void delete(int id){
         Post post = postRepository.findById(id).get();
         postRepository.delete(post);
     }
 
-    public void get(){
-        postRepository.findAll();
-    }
-
+    // 게시글 리스트
     public List<PostList> postList(){
         Sort sort = Sort.by(Sort.Direction.ASC, "date");
         List<Post> posts = postRepository.findAll(sort);
