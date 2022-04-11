@@ -1,12 +1,16 @@
 package com.example.tsinghuauniversity.post.entity;
 
+import com.example.tsinghuauniversity.comment.entity.Comment;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
+@Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,6 +33,9 @@ public class Post {
 
     @Column
     private String category;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
 
     public Post(String title, String content, String category) {
         this.title = title;

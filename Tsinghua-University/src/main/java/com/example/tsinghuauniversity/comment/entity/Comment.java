@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,16 +24,7 @@ public class Comment {
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "post_id")
     private Post post;
 
-    @Builder
-    public Comment(String comment){
-        this.comment = comment;
-    }
-
-    public Comment(String comment, Integer id) {
-        this.comment = comment;
-        this.id = id;
-    }
 }

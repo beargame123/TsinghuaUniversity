@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,23 +20,27 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
-    // 댓글 생성
-    public void create(int id,CommentDto commentDto){
-        Post post = postRepository.findById(id).get();
-        Comment comment = new Comment(commentDto.getComment(), post.getId());
+
+    public void create(Integer id,CommentDto commentDto){
+        Post post = postRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not find"));
+        Comment comment = Comment.builder()
+                .comment(commentDto.getComment())
+                .post(post)
+                .build();
         commentRepository.save(comment);
     }
 
-    // 댓글 리스트
-    public List<CommentList> commentList(@PathVariable int id){
-        Post post = postRepository.findById(id).get();
+    @Transactional
+    public List<CommentList> commentList(Integer id){
+        Post post = postRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("not found"));
         List<Comment> comments = commentRepository.findAll();
         List<CommentList> commentLists = new ArrayList<>();
 
         for(Comment comment: comments){
-            if(post.getId().equals(id)){
+            if(comment.getPost().getId() == post.getId()){
 
                 CommentList commentList = CommentList.builder()
+                        .id(comment.getId())
                         .comment(comment.getComment())
                         .build();
                 commentLists.add(commentList);

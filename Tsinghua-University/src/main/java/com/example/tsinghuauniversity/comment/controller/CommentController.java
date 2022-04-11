@@ -15,12 +15,12 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/{id}/create")
-    public void create(@PathVariable int id,CommentDto commentDto){
+    public void create(@PathVariable Integer id,@RequestBody CommentDto commentDto){
         commentService.create(id,commentDto);
     }
 
     @GetMapping("/List/{id}")
-    public List<CommentList> commentList(@PathVariable int id){
+    public List<CommentList> commentList(@PathVariable Integer id){
         return commentService.commentList(id);
     }
 

@@ -1,9 +1,11 @@
 package com.example.tsinghuauniversity.comment.dto;
 
-import lombok.Getter;
+import com.example.tsinghuauniversity.post.entity.Post;
+import lombok.*;
 
-@Getter
+@Data
+@NoArgsConstructor
 public class CommentDto {
-    int id;
     private String comment;
+
 }

@@ -16,19 +16,11 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
-    // 게시글 생성
     public void create(PostDto postDto){
         Post post = new Post(postDto.getTitle(), postDto.getContent(), postDto.getCategory());
         postRepository.save(post);
     }
 
-    // 게시글 삭제 (삭제 보류)
-    public void delete(int id){
-        Post post = postRepository.findById(id).get();
-        postRepository.delete(post);
-    }
-
-    // 게시글 리스트
     public List<PostList> postList(){
         Sort sort = Sort.by(Sort.Direction.ASC, "date");
         List<Post> posts = postRepository.findAll(sort);
@@ -37,10 +29,11 @@ public class PostService {
         for(Post post : posts){
             PostList dto = PostList.builder()
                     .title(post.getTitle())
+                    .id(post.getId())
+                    .date(post.getDate())
                     .category(post.getCategory())
                     .content(post.getContent())
-                    .date(post.getDate())
-                    .id(post.getId())
+                    .category(post.getCategory())
                     .build();
             latestListDto.add(dto);
         }

@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@Builder
 @RequiredArgsConstructor
 public class CommentList {
-    int id;
+    Integer id;
     String comment;
 
-    public CommentList(int id,String comment){
+    @Builder
+    public CommentList(int id, String comment){
         this.comment = comment;
         this.id = id;
     }
