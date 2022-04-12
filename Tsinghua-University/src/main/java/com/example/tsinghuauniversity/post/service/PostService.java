@@ -22,7 +22,7 @@ public class PostService {
     }
 
     public List<PostList> postList(){
-        Sort sort = Sort.by(Sort.Direction.ASC, "date");
+        Sort sort = Sort.by(Sort.Direction.ASC, "dateTime");
         List<Post> posts = postRepository.findAll(sort);
         List<PostList> latestListDto = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class PostService {
             PostList dto = PostList.builder()
                     .title(post.getTitle())
                     .id(post.getId())
-                    .date(post.getDate())
+                    .dateTime(post.getDateTime())
                     .category(post.getCategory())
                     .content(post.getContent())
                     .category(post.getCategory())

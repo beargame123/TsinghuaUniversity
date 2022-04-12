@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Builder
@@ -29,7 +31,7 @@ public class Post {
     private String content;
 
     @Column
-    private LocalDate date;
+    private LocalDateTime dateTime;
 
     @Column
     private String category;
@@ -41,6 +43,6 @@ public class Post {
         this.title = title;
         this.content = content;
         this.category = category;
-        this.date = LocalDate.now();
+        this.dateTime = LocalDateTime.now();
     }
 }

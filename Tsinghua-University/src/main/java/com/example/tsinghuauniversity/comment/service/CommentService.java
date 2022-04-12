@@ -8,7 +8,7 @@ import com.example.tsinghuauniversity.post.entity.Post;
 import com.example.tsinghuauniversity.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
