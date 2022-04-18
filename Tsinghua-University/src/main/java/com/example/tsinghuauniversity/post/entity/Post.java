@@ -1,6 +1,7 @@
 package com.example.tsinghuauniversity.post.entity;
 
 import com.example.tsinghuauniversity.comment.entity.Comment;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,18 +23,19 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
     private Integer id;
 
-    @Column
+    @Column(name = "title")
     private String title;
 
-    @Column
+    @Column(name = "content")
     private String content;
 
-    @Column
-    private LocalDateTime dateTime;
+    @Column(name = "date")
+    private LocalDateTime date;
 
-    @Column
+    @Column(name = "category")
     private String category;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
@@ -43,6 +45,6 @@ public class Post {
         this.title = title;
         this.content = content;
         this.category = category;
-        this.dateTime = LocalDateTime.now();
+        this.date = LocalDateTime.now();
     }
 }

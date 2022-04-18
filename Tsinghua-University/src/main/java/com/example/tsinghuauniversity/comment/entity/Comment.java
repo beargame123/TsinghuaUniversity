@@ -1,6 +1,7 @@
 package com.example.tsinghuauniversity.comment.entity;
 
 import com.example.tsinghuauniversity.post.entity.Post;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,9 +19,10 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
     private Integer id;
 
-    @Column
+    @Column(name = "comment")
     private String comment;
 
     @ManyToOne

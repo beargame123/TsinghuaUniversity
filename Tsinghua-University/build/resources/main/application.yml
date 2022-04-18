@@ -1,4 +1,10 @@
 spring:
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306
+      username: root
+      password: 1928
   jpa:
     open-in-view: true
     hibernate:
@@ -9,6 +15,3 @@ spring:
     show-sql: true
     properties:
       hibernate.format_sql: true
-  h2:
-    console:
-      enabled: true
