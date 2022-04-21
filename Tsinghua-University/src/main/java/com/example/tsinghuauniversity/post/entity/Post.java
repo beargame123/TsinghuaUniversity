@@ -43,6 +43,10 @@ public class Post {
         this.title = title;
         this.content = content;
         this.category = category;
+    }
+
+    @PostPersist
+    public void postPersist(){
         this.date = LocalDateTime.now();
     }
 }
