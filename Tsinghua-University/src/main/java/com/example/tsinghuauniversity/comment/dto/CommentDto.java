@@ -1,6 +1,5 @@
 package com.example.tsinghuauniversity.comment.dto;
 
-import com.example.tsinghuauniversity.post.entity.Post;
 import lombok.*;
 
 @Data

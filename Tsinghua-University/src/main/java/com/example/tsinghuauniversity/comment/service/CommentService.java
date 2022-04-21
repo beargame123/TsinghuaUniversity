@@ -37,7 +37,7 @@ public class CommentService {
         List<CommentList> commentLists = new ArrayList<>();
 
         for(Comment comment: comments){
-            if(comment.getPost().getId() == post.getId()){
+            if(comment.getPost().getId().equals(post.getId())){
 
                 CommentList commentList = CommentList.builder()
                         .id(comment.getId())
