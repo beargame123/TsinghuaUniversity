@@ -1,13 +1,10 @@
 package com.example.tsinghuauniversity.post.dto;
 
-import com.example.tsinghuauniversity.post.entity.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 @NoArgsConstructor
